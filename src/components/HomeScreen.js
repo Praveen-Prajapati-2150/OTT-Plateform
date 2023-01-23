@@ -1,8 +1,6 @@
 import React from 'react';
 import '../styles/HomeScreen.css';
 import Banner from './Banner';
-import Navbar from './Navbar';
-import requests from '../redux/Requests';
 import Row from './Row';
 
 const HomeScreen = () => {
