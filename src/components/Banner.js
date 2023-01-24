@@ -50,6 +50,8 @@ const Banner = () => {
         backgroundPosition: 'center center',
       }}
     >
+      <div className="banner__fadeBottom"></div>
+
       <div className="banner__contents">
         <h1 className="banner__title">{banner?.name}</h1>
         <div className="banner__buttons">
@@ -57,11 +59,9 @@ const Banner = () => {
           <button className="banner__button">My List</button>
         </div>
         <h1 className="banner__description">
-          {banner ? truncate(banner?.summary, 150) : null}
+          {banner ? truncate(banner?.summary, 200) : null}
         </h1>
       </div>
-
-      <div className="banner__fadeBottom"></div>
     </header>
   );
 };
