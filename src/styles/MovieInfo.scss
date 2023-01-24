@@ -4,6 +4,11 @@
   // background-color: lightcoral;
   background-color: black;
 
+  @media (max-width: 700px) {
+    height: 100%;
+    width: 100%;
+  }
+
   header {
     height: 60px;
     width: 100%;
@@ -19,11 +24,20 @@
 
     padding: 40px 100px;
 
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
+
     .image {
       // height: 100%;
-      height: 100%;
-      width: 30%;
+      height: 80%;
+      width: 25%;
       // background-color: lightseagreen;
+
+      @media (max-width: 700px) {
+        // height: 80%;
+        width: 100%;
+      }
 
       img {
         // height: 200px;
@@ -36,9 +50,15 @@
     .movie_info {
       height: 100%;
       // background-color: palevioletred;
-      width: 65%;
+      width: 75%;
       padding: 10px 0 0 80px;
       color: black;
+
+      @media (max-width: 700px) {
+        height: 80%;
+        width: 100%;
+        padding: 15px 0 0 0;
+      }
 
       h1 {
         padding: 10px 0 0 0;

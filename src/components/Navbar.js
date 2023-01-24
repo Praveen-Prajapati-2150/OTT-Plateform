@@ -49,7 +49,7 @@ const Navbar = () => {
           <img
             className="nav__logo__logo"
             src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
-            alt="hello"
+            alt="logo"
           />
         </Link>
 
@@ -63,12 +63,22 @@ const Navbar = () => {
               placeholder="search movie"
             />
 
-            <div className="search_list">
+            <div className="search_list" onClick={(e) => e.stopPropagation()}>
               {list?.map((movie, index) => {
                 console.log(movie?.show?.id);
                 return (
-                  <Link className="movie" to={`/movie/${movie?.show?.id}`}>
-                    <h3 className="movie_name" >{movie.show.name}</h3>
+                  <Link
+                    key={index}
+                    className="movie"
+                    onClick={() => window.open(`{/movie/${movie?.show?.id}`)}
+                    to={`/movie/${movie?.show?.id}`}
+                  >
+                    <h3
+                      onClick={() => window.open(`{/movie/${movie?.show?.id}`)}
+                      className="movie_name"
+                    >
+                      {movie.show.name}
+                    </h3>
                   </Link>
                 );
               })}

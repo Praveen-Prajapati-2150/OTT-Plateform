@@ -55,6 +55,7 @@ const MovieInfo = () => {
       <header></header>
 
       <div className="main">
+        
         <div className="image">
           {movie?.image?.original ? (
             <img src={movie?.image?.original} alt="movie.name" />
