@@ -2,13 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../styles/Navbar.css';
 import axios from 'axios';
+import cross from './cross.png';
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const [query, setQuery] = useState('');
   const [list, setList] = useState([]);
+  const [displaySearchItem, setDisplaySearchItem] = useState('block');
 
   const history = useHistory();
+
+  // const transition = () => {
+  //   setDisplaySearchItem('none');
+  //   setTimeout(() => setDisplaySearchItem('block'), 1000);
+  // };
 
   const transitionNavbar = () => {
     if (window.scrollY > 100) {
@@ -27,7 +34,6 @@ const Navbar = () => {
     axios
       .get(`https://api.tvmaze.com/search/shows?q=${query}`)
       .then((res) => {
-        // console.log(res);
         setList(res.data);
       })
       .catch((error) => {
@@ -37,6 +43,7 @@ const Navbar = () => {
 
   useEffect(() => {
     fetchMoviesList();
+    setDisplaySearchItem('block');
   }, [query]);
 
   // console.log({ query });
@@ -63,18 +70,25 @@ const Navbar = () => {
               placeholder="search movie"
             />
 
-            <div className="search_list" onClick={(e) => e.stopPropagation()}>
+            <div
+              className="search_list"
+              style={{ display: `${displaySearchItem}` }}
+              onClick={(e) => e.stopPropagation()}
+            >
               {list?.map((movie, index) => {
                 console.log(movie?.show?.id);
                 return (
                   <Link
                     key={index}
                     className="movie"
-                    onClick={() => window.open(`{/movie/${movie?.show?.id}`)}
                     to={`/movie/${movie?.show?.id}`}
+                    onClick={() => {
+                      // transition();
+                      setDisplaySearchItem('none');
+                    }}
                   >
                     <h3
-                      onClick={() => window.open(`{/movie/${movie?.show?.id}`)}
+                      // onClick={() => window.open(`{/movie/${movie?.show?.id}`)}
                       className="movie_name"
                     >
                       {movie.show.name}
@@ -86,7 +100,7 @@ const Navbar = () => {
           </div>
 
           <img
-            onClick={() => history.push('/profile')}
+            onClick={() => history.push('/')}
             className="nav__icon"
             src="https://www.freepnglogos.com/uploads/netflix-logo-circle-png-5.png"
             alt="icon"

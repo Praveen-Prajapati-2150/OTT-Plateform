@@ -19,7 +19,7 @@ const MovieInfo = () => {
     }
 
     fetchData();
-  }, []);
+  }, [params]);
 
   useEffect(() => {
     const fetchCast = async () => {
@@ -55,12 +55,14 @@ const MovieInfo = () => {
       <header></header>
 
       <div className="main">
-        
         <div className="image">
-          {movie?.image?.original ? (
-            <img src={movie?.image?.original} alt="movie.name" />
+          {movie?.image?.original || movie?.image?.medium ? (
+            <img
+              src={movie?.image?.original || movie?.image?.medium}
+              alt="movie.name"
+            />
           ) : (
-            'Loading'
+            'Loading...'
           )}
         </div>
 
